@@ -13,6 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+			
+			Text("Memo")
+				.font(.largeTitle)
+				.padding()
+			
             ScrollView{
                 cardDisplay
             }
