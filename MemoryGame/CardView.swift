@@ -8,36 +8,27 @@
 import SwiftUI
 
 struct CardView: View {
-	@State var isReverse: Bool = false
-	var emoji: String
+	@State var isFaceUp = true
+	var content: String
 	var body: some View {
-		ZStack{
-			Group{
-				RoundedRectangle(cornerRadius: 12)
-					.stroke(Color.blue, lineWidth: 6)
-				if isReverse {
-					Text(emoji)
-						.font(.largeTitle)
-						.opacity(isReverse ? 1 : 0)
-				} else {
-					Text("")
-				}
-				RoundedRectangle(cornerRadius: 12)
-					.fill(Color.blue)
-					.opacity(isReverse ? 0 : 1)
-
+		ZStack {
+			let base = RoundedRectangle(cornerRadius: 12)
+			Group {
+				base.fill(.white)
+				base.strokeBorder(lineWidth: 2)
+				Text(content).font(.system(size: 100))
+					.minimumScaleFactor(0.01)
+					.aspectRatio(contentMode: .fit)
 			}
+			.opacity(isFaceUp ? 1 : 0)
+			base.fill().opacity(isFaceUp ? 0 : 1)
 		}
-		.onTapGesture {
-			withAnimation {
-				isReverse.toggle()
-			}
-		}
-		.frame(width: 100, height: 100)
-		.padding(.top, 10)
+		.onTapGesture(perform: {
+			isFaceUp.toggle()
+		})
 	}
 }
 
-#Preview {
-	CardView(emoji: "👻")
-}
+//#Preview {
+//	CardView(emoji: "👻")
+//}
