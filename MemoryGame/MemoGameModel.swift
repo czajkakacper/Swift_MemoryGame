@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MemoGameModel<CardContent> where CardContent: Equatable{
 	private(set) var cards: Array<Card>
-	private(set) var minCard: Card? = nil
+	private(set) var mainCard: Card? = nil
 	
 	init(numberOfCards: Int, cardContentFactory: (Int)->CardContent){
 		cards = []
