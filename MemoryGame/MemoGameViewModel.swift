@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct MemoGameViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+class MemoGameViewModel: ObservableObject {
+	private static let tab1 = ["😊", "😅", "😍", "😂", "🫠", "🙂", "😇", "🥰", "😉", "🤪"]
+	private static let tab2 = ["🌟", "✨", "🎉", "🎊", "🎈", "🎆", "🎇", "🌈", "🎶", "🎵"]
+	private static let tab3 = ["💖", "💔", "💞", "💓", "💘", "💗", "💕", "💌", "🌹", "🌺"]
+
+	func choose(_ card: MemoGameModel<String>.Card){
+		model.choose(card)
+	}
+	
+	func schuffle(){
+		model.shuffle()
+	}
 }
 
-#Preview {
-    MemoGameViewModel()
-}

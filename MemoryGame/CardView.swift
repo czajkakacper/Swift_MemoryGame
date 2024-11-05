@@ -28,7 +28,3 @@ struct CardView: View {
 		})
 	}
 }
-
-//#Preview {
-//	CardView(emoji: "👻")
-//}

@@ -7,12 +7,25 @@
 
 import SwiftUI
 
-struct MemoGameModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    MemoGameModel()
+struct MemoGameModel<CardContent> where CardContent: Equatable{
+	private(set) var cards: Array<Card>
+	private(set) var minCard: Card? = nil
+	
+	init(numberOfCards: Int, cardContentFactory: (Int)->CardContent){
+		cards = []
+		let mainCardNumber = Int.random(in: 0..<numberOfCards)
+		for index 0..<numberOfCards{
+			let content: CardContent = cardContentFactory(index)
+			cards.append(Card(content: content, id ))
+		}
+	}
+	
+	
+	func choose(_ card:Card){
+		
+	}
+	
+	mutating func shuffle(){
+		card.shuffle()
+	}
 }
