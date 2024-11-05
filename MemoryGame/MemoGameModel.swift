@@ -14,18 +14,27 @@ struct MemoGameModel<CardContent> where CardContent: Equatable{
 	init(numberOfCards: Int, cardContentFactory: (Int)->CardContent){
 		cards = []
 		let mainCardNumber = Int.random(in: 0..<numberOfCards)
-		for index 0..<numberOfCards{
+		for index in 0..<numberOfCards{
 			let content: CardContent = cardContentFactory(index)
-			cards.append(Card(content: content, id ))
+			cards.append(Card(content: content, id: "\(index)a"))
+			if mainCardNumber == index {
+				self.mainCard = Card(content: content, id: "\(index)b")
+			}
 		}
 	}
-	
 	
 	func choose(_ card:Card){
 		
 	}
 	
 	mutating func shuffle(){
-		card.shuffle()
+		cards.shuffle()
+	}
+	
+	struct Card: Equatable, Identifiable{
+		var isFaceUp = true
+		var isMatched = false
+		let content: CardContent
+		let id: String
 	}
 }
