@@ -8,10 +8,18 @@
 import SwiftUI
 
 class MemoGameViewModel: ObservableObject {
-	private static let tab1 = ["😊", "😅", "😍", "😂", "🫠", "🙂", "😇", "🥰", "😉", "🤪"]
-	private static let tab2 = ["🌟", "✨", "🎉", "🎊", "🎈", "🎆", "🎇", "🌈", "🎶", "🎵"]
-	private static let tab3 = ["💖", "💔", "💞", "💓", "💘", "💗", "💕", "💌", "🌹", "🌺"]
+	private static let emojis1 = ["😊", "😅", "😍", "😂", "🫠", "🙂", "😇", "🥰", "😉", "🤪"]
+	private static let emojis2 = ["🌟", "✨", "🎉", "🎊", "🎈", "🎆", "🎇", "🌈", "🎶", "🎵"]
+	private static let emojis3 = ["💖", "💔", "💞", "💓", "💘", "💗", "💕", "💌", "🌹", "🌺"]
 
+	private static func createMemoryGame() -> MemoGameModel<String> {
+		return MemoGameModel<String>(numberOfCards: currentEmoijs.count) { index in
+			if(){
+			} else {
+				return "?"
+			}
+	}
+	
 	func choose(_ card: MemoGameModel<String>.Card){
 		model.choose(card)
 	}
